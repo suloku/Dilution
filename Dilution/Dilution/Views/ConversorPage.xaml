@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="Dilution.Views.ConversorPage"
+             xmlns:vm="clr-namespace:Dilution.ViewModels"
+             Title="{Binding Title}">
+
+    <ContentPage.BindingContext>
+        <vm:ConversorViewModel />
+    </ContentPage.BindingContext>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60" />
+            <RowDefinition Height="60" />
+            <RowDefinition Height="60" />
+            <RowDefinition Height="60" />
+        </Grid.RowDefinitions>
+
+
+        <Label Text="Dose conversor" Grid.Row="0" Grid.ColumnSpan="5"
+               FontAttributes="Bold" FontSize="30" HorizontalOptions="Center" VerticalOptions="Center" 
+        />
+        
+        <Label Text="Dose:" FontSize="Medium" Grid.Row="1" Grid.Column="0" VerticalOptions="Center"/>
+        <Entry Grid.Row="1" Grid.Column="1"
+            x:Name="doseAbsolute"
+            Keyboard="Numeric"
+        />
+
+        <Picker x:Name="dosePicker" Grid.Row="1" Grid.Column="2"
+        Title="mcg"
+        TitleColor="Red">
+            <Picker.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                    <x:String>mcg</x:String>
+                    <x:String>mg</x:String>
+                </x:Array>
+            </Picker.ItemsSource>
+        </Picker>
+
+        <Label Text="/    kg    /" FontSize="Medium" Grid.Row="1" Grid.Column="3" HorizontalOptions="Center" VerticalOptions="Center" TextColor="Black"/>
+
+        <Picker x:Name="timePicker" Grid.Row="1" Grid.Column="4"
+        Title="minute"
+        TitleColor="Red">
+            <Picker.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                    <x:String>minute</x:String>
+                    <x:String>hour</x:String>
+                </x:Array>
+            </Picker.ItemsSource>
+        </Picker>
+
+        <Label Text="Output dose:" FontSize="Medium" Grid.Row="2" Grid.Column="0"/>
+        <Picker x:Name="OutDosePicker" Grid.Row="2" Grid.Column="2"
+        Title="mcg"
+        TitleColor="Red">
+            <Picker.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                    <x:String>mcg</x:String>
+                    <x:String>mg</x:String>
+                </x:Array>
+            </Picker.ItemsSource>
+        </Picker>
+        <Label Text="/    kg    /" FontSize="Medium" Grid.Row="2" Grid.Column="3" HorizontalOptions="Center" VerticalOptions="Center" TextColor="Black"/>
+        <!--<Picker x:Name="kgPicker2" Grid.Row="2" Grid.Column="2"
+        Title="/kg/"
+        TitleColor="Black">
+            <Picker.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                    <x:String>mcg</x:String>
+                    <x:String>mg</x:String>
+                </x:Array>
+            </Picker.ItemsSource>
+        </Picker>-->
+        <Picker x:Name="OutTimePicker" Grid.Row="2" Grid.Column="4"
+        Title="minute"
+        TitleColor="Red">
+            <Picker.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                    <x:String>minute</x:String>
+                    <x:String>hour</x:String>
+                </x:Array>
+            </Picker.ItemsSource>
+        </Picker>
+
+        <Button Grid.Row="3" Grid.ColumnSpan="5"
+            x:Name="ConvertBut"
+            Text="Convert"
+            Clicked="OnButtonClicked"
+        />
+        <Label Grid.Row="4" Grid.ColumnSpan="5"
+            x:Name="CalcRes"
+            Text="Dose: "
+            FontAttributes="Bold"
+            FontSize="Large"
+        />
+    </Grid>
+
+</ContentPage>
